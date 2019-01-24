@@ -37,7 +37,7 @@ namespace MutMaster
             services.AddSingleton<SpeechService>(sp=>{
                 var builder= new SpeechServiceBuilder()
                     .SetRegion("eastus")
-                    .SetSubScriptionKey(Configuration["Azure.SubscriptionKeys:Speech"]);
+                    .SetSubScriptionKey(Configuration["Azure:SubscriptionKeys:Speech"]);
                 return builder.Build();
             });
         }
