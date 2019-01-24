@@ -18,7 +18,6 @@ class LangControl{
         this.form.appendChild(voiceSelectorLabel);
         this.form.appendChild(this.voiceSelector);
         this.render();
-        this.state = this._filterVoices()[0];
     }
 
     _createSelectElement( array=[{value:null, text:null}], onchange=null ){
@@ -72,6 +71,7 @@ class LangControl{
         var genderLabel = document.createElement("label");
         genderLabel.setAttribute("for","genderSelector");
         genderLabel.textContent= "性别";
+        var genderSelectorWrapper= 
         form.appendChild(genderLabel);
         form.appendChild(genderSelector);
 
