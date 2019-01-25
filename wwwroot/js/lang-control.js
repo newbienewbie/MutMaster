@@ -11,13 +11,6 @@ class LangControl{
         };
         this.form = this._initialize();
         container.appendChild(this.form);
-
-        // initial voice selector
-        this.voiceSelector = this._createEmptyVoiceSelector();
-        const voiceSelectorLabel = this._createLabel("voiceSelector","语音");
-        this.form.appendChild(voiceSelectorLabel);
-        this.form.appendChild(this.voiceSelector);
-        this.render();
     }
 
     _createSelectElement( array=[{value:null, text:null}], onchange=null ){
@@ -67,13 +60,11 @@ class LangControl{
         });
         genderSelector.setAttribute("name","gender");
         genderSelector.setAttribute("id","genderSelector");
+        genderSelector.setAttribute("class","form-control");
         // create label
-        var genderLabel = document.createElement("label");
-        genderLabel.setAttribute("for","genderSelector");
-        genderLabel.textContent= "性别";
-        var genderSelectorWrapper= 
-        form.appendChild(genderLabel);
-        form.appendChild(genderSelector);
+        var genderLabel = this._createLabel("genderSelector","性别");
+        var genderGroup = this._createFormGroup(genderLabel,genderSelector);
+        form.appendChild(genderGroup);
 
 
         // region 
@@ -88,11 +79,20 @@ class LangControl{
         });
         languageSelector.setAttribute("name","region");
         languageSelector.setAttribute("id","languageSelector");
-        var languageLabel = document.createElement("label");
-        languageLabel.setAttribute("for","languageSelector");
-        languageLabel.textContent= "地区";
-        form.appendChild(languageLabel);
-        form.appendChild(languageSelector);
+        languageSelector.setAttribute("class","form-control");
+        var languageLabel = this._createLabel("languageSelector","地区");
+        var languageGroup = this._createFormGroup(languageLabel,languageSelector);
+        form.appendChild(languageGroup);
+
+
+        // initial voice selector
+        this.voiceSelector = this._createEmptyVoiceSelector();
+        const voiceSelectorLabel = this._createLabel("voiceSelector","语音");
+        var voiceGroup = this._createFormGroup(voiceSelectorLabel,this.voiceSelector);
+        form.appendChild(voiceGroup);
+
+        // trigger once when initializing
+        this.render();
 
         return form;
     }
@@ -101,13 +101,29 @@ class LangControl{
         var label = document.createElement("label");
         label.setAttribute("for",labelFor);
         label.textContent= text;
+        label.setAttribute("class","col-sm-2 col-form-label");
         return label;
+    }
+
+    _createFormGroup(label,control){
+        var wrapper=document.createElement("div");
+        wrapper.setAttribute("class","form-group row");
+
+        wrapper.appendChild(label);
+
+        var controlWrapper= document.createElement("div");
+        controlWrapper.setAttribute("class","col-sm-10");
+        controlWrapper.appendChild(control);
+
+        wrapper.appendChild(controlWrapper);
+        return wrapper;
     }
     
     _createEmptyVoiceSelector(){
         // voice 
         var voiceSelector = document.createElement("select");
         voiceSelector.setAttribute("name","voice");
+        voiceSelector.setAttribute("class","form-control");
         voiceSelector.onchange = e =>{
             e.preventDefault();
             console.log("voice changed",e);
