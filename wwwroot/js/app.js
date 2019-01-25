@@ -7,11 +7,12 @@ class MutMasterControl {
     constructor(container,langs) {
         this.langControl = new LangControl(container.querySelector(".lang-filters"),langs);
         window.langControl = this.langControl;
-        this.mainSection = container.querySelector('.main-controls');
-        this.record = this.mainSection.querySelector('.record');
-        this.stop = this.mainSection.querySelector('.stop');
+        this.mainControls = container.querySelector('.main-controls');
+        this.record = this.mainControls.querySelector('.record');
+        this.stop = this.mainControls.querySelector('.stop');
         this.resultStatusElement= container.querySelector(".result-status");
         this.resultTextElement= container.querySelector(".result-text");
+        this.audiosWrapper = container.querySelector(".audio-results");
         this.ttsButton = container.querySelector(".tts");
         this.audioCtx = new(window.AudioContext || window.webkitAudioContext)();
         this.stop.disabled = true;
@@ -109,9 +110,11 @@ class MutMasterControl {
                 var tip = document.createElement('div');
                 tip.textContent= `${text} - ${font}`;
                 var container=document.createElement('div');
+                container.setAttribute("class","audio-item row");
                 container.appendChild(tip);
                 container.appendChild(audio);
-                document.body.appendChild(container);
+                // insert as the first child
+                this.audiosWrapper.insertBefore(container,this.audiosWrapper.firstChild);
             });
     }
 

@@ -1,16 +1,19 @@
+
+@mixin control-padding($borderSize){
+    margin-top: 1em;
+    padding: 1em 1em;
+    border: $borderSize solid #0088cc;
+}
+
 .wrapper {
 
     .lang-filters{
-        margin-top: 1em;
-        padding: 1em 1em;
         justify-content: space-between;
-        border: 1px solid #0088cc;
+        @include control-padding(1px);
     }
 
     .main-controls {
-        margin-top: 1em;
-        padding: 1em 1em;
-        border: 1px solid #0088cc;
+        @include control-padding(1px);
         .buttons{
             button{
                 padding: 1em;
@@ -18,9 +21,12 @@
         }
     }
 
+    .audio-results{
+        @include control-padding(0);
+    }
+
     .result{
         padding: 0 ;
-        //margin : 1em 0;
 
         .result-info{
             margin: 1em 0;
@@ -98,7 +104,6 @@ button {
 
     &:active {
         box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
-        //transform: translateY(2px);
     }
 }
 
