@@ -2,28 +2,29 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <div class="wrapper" id="w-container">
+    <div class="wrapper container" id="w-container">
         <div class="lang-filters"></div>
         <section class="main-controls">
-            <div id="buttons">
-                <button class="record">Record</button>
-                <button class="stop">Stop</button>
-            </div>
-            <div class="result container">
-                <div class="row">
-                    <span>语-文转换结果: </span>
-                    <span class="result-status"></span>
+            <div id="buttons" class="row">
+                <div class="col-6">
+                    <button class="record btn btn-primary btn-block">Record</button>
                 </div>
-                <div class="row">
-                   <span>文本内容: </span>
-                   <span contenteditable="true" class="result-text" ></span>
+                <div class="col-6">
+                    <button class="stop btn btn-primary btn-block">Stop</button>
+                </div>
+            </div>
+            <div class="result">
+                <div class="row result-info">
+                    <div class="col-3 tip"><span>转换结果: </span></div>
+                    <span class="result-status col-8"></span>
+                </div>
+                <div class="row result-info">
+                   <div class="col-3 tip"><span>文本内容: </span></div>
+                   <div contenteditable="true" class="result-text col-7"></div>
+                   <button class="tts col-2">TTS</button>
                 </div>
             </div>
         </section>
-        <div>
-            <button class="tts">TTS</button>
-        </div>
     </div>
 
     <section class="help-info">
@@ -37,7 +38,6 @@
             </p>
         </section>
     </section>
-</div>
 
 
 @section Scripts{

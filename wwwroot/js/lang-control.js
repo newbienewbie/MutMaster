@@ -101,7 +101,7 @@ class LangControl{
         var label = document.createElement("label");
         label.setAttribute("for",labelFor);
         label.textContent= text;
-        label.setAttribute("class","col-sm-2 col-form-label");
+        label.setAttribute("class","col-3");
         return label;
     }
 
@@ -112,7 +112,7 @@ class LangControl{
         wrapper.appendChild(label);
 
         var controlWrapper= document.createElement("div");
-        controlWrapper.setAttribute("class","col-sm-10");
+        controlWrapper.setAttribute("class","col-9");
         controlWrapper.appendChild(control);
 
         wrapper.appendChild(controlWrapper);
@@ -144,11 +144,11 @@ class LangControl{
     }
     render(){
         var voices = this._filterVoices();
-        this.voiceSelector.innerHTML = "";
+        this.voiceSelector.innerHTML = ""; // clear the previous rendered results
         this._createOptElements(voices).forEach(v =>{
             this.voiceSelector.appendChild(v);
         });
-        if(voices.length>=1){
+        if(voices.length>=1){              // set the default value for those avaible options
             this.state.voice = voices[0].value;
         }
     }
