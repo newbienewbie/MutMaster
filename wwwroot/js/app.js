@@ -117,8 +117,6 @@ class MutMasterControl {
                 this.audiosWrapper.insertBefore(container,this.audiosWrapper.firstChild);
             });
     }
-
-
 }
 
 
