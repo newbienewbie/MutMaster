@@ -1,43 +1,34 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
+.wrapper .lang-filters {
+  justify-content: space-between;
+  margin-top: 1em;
+  padding: 1em 1em;
+  border: 1px solid #0088cc; }
 
-html, body {
-  height: 100%; }
+.wrapper .main-controls {
+  margin-top: 1em;
+  padding: 1em 1em;
+  border: 1px solid #0088cc; }
+  .wrapper .main-controls .buttons button {
+    padding: 1em; }
 
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 0.8rem; }
+.wrapper .audio-results {
+  margin-top: 1em;
+  padding: 1em 1em;
+  border: 0 solid #0088cc; }
 
-.wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column; }
-  .wrapper .main-controls {
-    padding: 0.5rem 0; }
-  .wrapper canvas {
-    display: block;
-    margin-bottom: 0.5rem; }
-  .wrapper #buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; }
-    .wrapper #buttons button {
-      font-size: 1rem;
-      padding: 1rem;
-      width: calc(50% - 0.25rem); }
-
-h1, h2 {
-  font-size: 2rem;
-  text-align: center;
-  font-weight: normal;
-  padding: 0.5rem 0 0 0; }
+.wrapper .result {
+  padding: 0; }
+  .wrapper .result .result-info {
+    margin: 1em 0; }
+  .wrapper .result .row .tip span {
+    text-align: left; }
+  .wrapper .result .result-text {
+    border: 1px solid skyblue; }
 
 .help-info label {
   font-size: 2.1rem;
   position: absolute;
-  top: 2px;
+  bottom: 5px;
   right: 3px;
   z-index: 5;
   cursor: pointer; }
@@ -70,55 +61,14 @@ button {
   color: white;
   border: none;
   transition: all 0.2s;
-  padding: 0.5rem; }
+  padding: 1.0rem; }
   button:hover, button:focus {
     box-shadow: inset 0px 0px 10px white;
     background: #0ae; }
   button:active {
-    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
-    transform: translateY(2px); }
-
-/* Make the clips use as much space as possible, and
- * also show a scrollbar when there are too many clips to show
- * in the available space */
-.sound-clips {
-  flex: 1;
-  overflow: auto; }
-
-section,
-article {
-  display: block; }
-
-.clip {
-  padding-bottom: 1rem; }
+    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5); }
 
 audio {
   width: 100%;
   display: block;
   margin: 1rem auto 0.5rem; }
-
-.clip p {
-  display: inline-block;
-  font-size: 1rem; }
-
-.clip button {
-  font-size: 1rem;
-  float: right; }
-
-button.delete {
-  background: #f00;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.8rem; }
-
-/* Cursor when clip name is clicked over */
-.clip p {
-  cursor: pointer; }
-
-/* Adjustments for wider screens */
-@media all and (min-width: 800px) {
-  /* Don't take all the space as readability is lost when line length
-     goes past a certain size */
-  .wrapper {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto; } }

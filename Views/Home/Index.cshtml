@@ -2,36 +2,55 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <div class="wrapper" id="w-container">
+    <div class="wrapper container" id="w-container">
+        <div class="lang-filters"></div>
         <section class="main-controls">
-            <div id="buttons">
-                <button class="record">Record</button>
-                <button class="stop">Stop</button>
-            </div>
-            <div class="result container">
+            <div id="buttons" class="row">
                 <div class="col-6">
-                    <span>语-文转换结果: </span><span class="result-status"></span>
+                    <button class="record btn btn-primary btn-block">Record</button>
                 </div>
                 <div class="col-6">
-                   <span>文本内容: </span><span contenteditable="true" class="result-text"></span>
+                    <button class="stop btn btn-primary btn-block">Stop</button>
+                </div>
+            </div>
+            <div class="result">
+                <div class="row result-info">
+                    <div class="col-3 tip"><span>转换结果: </span></div>
+                    <span class="result-status col-8"></span>
+                </div>
+                <div class="row result-info">
+                   <div class="col-3 tip"><span>文本内容: </span></div>
+                   <div contenteditable="true" class="result-text col-7"></div>
+                   <button class="tts col-2">TTS</button>
                 </div>
             </div>
         </section>
-        <div>
-            <button class="tts">TTS</button>
-        </div>
+        <div class="audio-results"></div>
     </div>
 
     <section class="help-info">
-        <label for="toggle-help-info">❔</label>
+        <label for="toggle-help-info"><svg width="35px" height="35px" class="octicon octicon-info" viewBox="0 0 14 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></label>
         <input id="toggle-help-info" type="checkbox" >
         <section>
             <h2>Information</h2>
             <p> 
-                <a>getUserMedia</a>
-                <a>MediaRecorder API</a>
+                <ul>
+                    <li>record: record the audio input as <b>audio/webm;codecs=opus</b></li>
+                    <li>decode: construct a blob to hold audio data, and then read the audio blob as <b>ArrayBuffer</b></li>
+                    <li>encode: encode the ArrayBuffer to <b>audio/wav; codecs=audio/pcm;</b></li>
+                    <li><b>[remote invoking]</b>: Recognize the audio input</li>
+                    <li><b>[remote invoking]</b>: Convert the text to audio blob</li>
+                    <li>play: create an <b>audio</b> element and using <b>URL.createObjectURL(blob)</b> </li>
+                </ul>
             </p>
         </section>
     </section>
-</div>
+
+
+@section Scripts{
+    <script src="~/js/encode.js" asp-append-version="true"></script>
+    <script src="~/js/audio-helper.js" asp-append-version="true"></script>
+    <script src="~/js/languages.js" asp-append-version="true"></script>
+    <script src="~/js/lang-control.js" asp-append-version="true"></script>
+    <script src="~/js/app.js" asp-append-version="true"></script>
+}

@@ -1,5 +1,4 @@
 function audioBufferToWav(buffer, opt) {
-    console.log("----------------");
     opt = opt || {}
 
     var numChannels = buffer.numberOfChannels
